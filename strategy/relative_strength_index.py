@@ -2,7 +2,7 @@ from __future__ import division
 from utils import open_csv, parse_data, make_copy, average, prev_values
 
 
-csv_path = './indicatorservice/data/rsi.csv'
+csv_path = '../indicatorservice/data/rsi.csv'
 
 raw_data = parse_data(open_csv(csv_path))
 
