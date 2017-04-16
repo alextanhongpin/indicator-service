@@ -2,7 +2,7 @@ from __future__ import division
 from utils import open_csv, parse_data, make_copy, average, prev_values
 
 csv_path = '../indicatorservice/data/sma.csv'
-raw_data = parse_data(open_csv(csv_path))
+# raw_data = parse_data(open_csv(csv_path))
 
 
 def upper_envelope(sma, envelope=0.025):
@@ -22,7 +22,9 @@ def simple_moving_average(data, period=20, envelope=2.5):
     # First data
     output = [average(prev_values(data, i, period))
               for i, v in enumerate(data)]
-    return [(sma, upper_envelope(sma, percentage_envelope), lower_envelope(sma, percentage_envelope))
+    return [{ 'sma': sma, 
+              'upper_envelope': upper_envelope(sma, percentage_envelope),
+              'lower_envelope': lower_envelope(sma, percentage_envelope) }
             for sma in output]
 
 # Calculate the SMA
